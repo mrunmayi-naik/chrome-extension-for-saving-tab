@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Management</title>
+  <style>
+    /* Add the CSS styles here */
+    .delete-item {
+        display: none;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .lead-item:hover .delete-item {
+        display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="input-el" placeholder="Enter a URL">
+  <button id="input-btn">Add Lead</button>
+  <button id="delete-btn">Delete All Leads</button>
+  <br><br>
+  <ul id="ul-el"></ul>
+
+  <script>
+    // Your JavaScript code here
+    function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
+        <li class="lead-item">
+            <a target='_blank' href='${leads[i]}'>
+                ${leads[i]} 
+            </a>
+            <button class="delete-item" data-index="${i}">Delete</button>
+        </li>
+        `
+    }
+    ulEl.innerHTML = listItems
+    addDeleteListeners()
+}
+
+  </script>
+</body>
+</html>
